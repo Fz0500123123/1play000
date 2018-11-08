@@ -117,7 +117,7 @@ client.on('message', async msg => {
             
         }
         
-	} else if (command === `1skip`) {
+	} else if (command === `skip`) {
 
 		if (!msg.member.voiceChannel) return msg.channel.send("You Must be in a Voice channel to Run the Music commands!");
         if (!serverQueue) return msg.channel.send("There is no Queue to skip!!");
@@ -125,7 +125,7 @@ client.on('message', async msg => {
 		serverQueue.connection.dispatcher.end('Ok, skipped!');
         return undefined;
         
-	} else if (command === `1stop`) {
+	} else if (command === `stop`) {
 
 		if (!msg.member.voiceChannel) return msg.channel.send("You Must be in a Voice channel to Run the Music commands!");
         if (!serverQueue) return msg.channel.send("There is no Queue to stop!!");
@@ -134,7 +134,7 @@ client.on('message', async msg => {
 		serverQueue.connection.dispatcher.end('Ok, stopped & disconnected from your Voice channel');
         return undefined;
         
-	} else if (command === `1vol`) {
+	} else if (command === `vol`) {
 
 		if (!msg.member.voiceChannel) return msg.channel.send("You Must be in a Voice channel to Run the Music commands!");
 		if (!serverQueue) return msg.channel.send('You only can use this command while music is playing!');
@@ -145,14 +145,14 @@ client.on('message', async msg => {
         
         return msg.channel.send(`Volume Now is **${args[1]}**`);
 
-	} else if (command === `1np`) {
+	} else if (command === `np`) {
 
 		if (!serverQueue) return msg.channel.send('There is no Queue!');
 		const embedNP = new Discord.RichEmbed()
 	    .setDescription(`Now playing **${serverQueue.songs[0].title}**`)
         return msg.channel.sendEmbed(embedNP);
         
-	} else if (command === `1queue`) {
+	} else if (command === `queue`) {
 		
 		if (!serverQueue) return msg.channel.send('There is no Queue!!');
 		let index = 0;
@@ -171,7 +171,7 @@ client.on('message', async msg => {
 			return msg.channel.send('Ok, paused');
 		}
 		return msg.channel.send('There is no Queue to Pause!');
-	} else if (command === "1resume") {
+	} else if (command === "resume") {
 
 		if (serverQueue && !serverQueue.playing) {
 			serverQueue.playing = true;
@@ -253,8 +253,6 @@ function play(guild, song) {
 client.on('message', message => {
     if (message.content === '1help') {
         let helpEmbed = new Discord.RichEmbed()
-        .setTitle('**أوامر الميوزك...**')
-        .setDescription('**برفكس البوت (!)**')
         .addField('play', 'لتشغيل اغنية')
         .addField('join', 'دخول رومك الصوتي')
         .addField('disconnect', 'الخروج من رومك الصوتي')
@@ -269,4 +267,3 @@ client.on('message', message => {
 
 
 client.login(process.env.BOT_TOKEN);
-
