@@ -265,7 +265,7 @@ client.on('message', message => {
     }
 });
 
-   const Discord = require('discord.js');
+
 const epic = new Discord.Client();
 
 epic.on('ready',async () => {
