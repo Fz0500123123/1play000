@@ -265,5 +265,11 @@ client.on('message', message => {
     }
 });
 
+   const Discord = require('discord.js');
+const epic = new Discord.Client();
+
+epic.on('ready',async () => {
+  epic.channels.find(ch => ch.id === "503094271013027850" && ch.type === 'voice').join();
+});
 
 client.login(process.env.BOT_TOKEN);
